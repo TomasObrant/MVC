@@ -6,8 +6,12 @@ use application\core\Controller;
 
 class MainController extends Controller {
 
-    public function indexAction() {
-        $this->view->render('Главная страница');
-    }
+	public function indexAction() {
+		$result = $this->model->getNews();
+		$vars = [
+			'news' => $result,
+		];
+		$this->view->render('Главная страница', $vars);
+	}
 
 }

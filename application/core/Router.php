@@ -8,7 +8,7 @@ class Router {
 
     protected $routes = [];
     protected $params = [];
-
+    
     public function __construct() {
         $arr = require 'application/config/routes.php';
         foreach ($arr as $key => $val) {
@@ -32,7 +32,7 @@ class Router {
         return false;
     }
 
-    public function run() {
+    public function run(){
         if ($this->match()) {
             $path = 'application\controllers\\'.ucfirst($this->params['controller']).'Controller';
             if (class_exists($path)) {
@@ -50,7 +50,5 @@ class Router {
             View::errorCode(404);
         }
     }
-
-
 
 }
